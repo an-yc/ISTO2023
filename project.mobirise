@@ -95,7 +95,7 @@
     "sitemapSwitcherAuto": "on",
     "siteUrl": false,
     "witsec-white-label": false,
-    "uniqCompNum": 500,
+    "uniqCompNum": 502,
     "versionPublish": "5.9.0",
     "screenshot": "screenshot.png",
     "cookiesAlert": false,
@@ -1479,6 +1479,151 @@
           "_params": {}
         },
         {
+          "_name": "features6",
+          "_sourceTheme": "leaderm5",
+          "_styles": {
+            "& when not (@fullScreen)": {
+              "padding-top": "(@paddingTop * 1rem)",
+              "padding-bottom": "(@paddingBottom * 1rem)"
+            },
+            "& when (@bg-type = 'color')": {
+              "background-color": "@bg-value"
+            },
+            "& when (@bg-type = 'image')": {
+              "background-image": "url(@bg-value)"
+            },
+            ".mbr-fallback-image.disabled": {
+              "display": "none"
+            },
+            ".row": {
+              "align-items": "stretch",
+              "padding": "0 0px",
+              "position": "relative",
+              "z-index": "1",
+              "justify-content": "center",
+              "@media (max-width: 992px)": {
+                "padding": "0 12px"
+              },
+              "&::after": {
+                "content": "''",
+                "display": "block",
+                "position": "absolute",
+                "width": "75%",
+                "height": "45%",
+                "right": "0",
+                "top": "-5rem",
+                "border-radius": "0 0 50% 0",
+                "@media (max-width: 992px)": {
+                  "display": "none"
+                }
+              }
+            },
+            ".mbr-fallback-image": {
+              "display": "block",
+              "background-size": "cover",
+              "background-position": "center center",
+              "width": "100%",
+              "height": "100%",
+              "position": "absolute",
+              "top": "0",
+              "& when (@bg-type = 'video')": {
+                "background-image": "url(@fallBackImage)"
+              }
+            },
+            ".item": {
+              "padding": "10px",
+              "min-height": "500px",
+              "z-index": "1",
+              ".item-wrapper": {
+                "position": "relative",
+                "height": "100%",
+                "padding": "20px",
+                "display": "flex",
+                "flex-direction": "column",
+                "justify-content": "space-between",
+                "&:hover": {
+                  "&::before": {
+                    "opacity": ".4"
+                  }
+                },
+                "&::before": {
+                  "content": "''",
+                  "display": "block",
+                  "position": "absolute",
+                  "top": "0",
+                  "left": "0",
+                  "width": "100%",
+                  "height": "100%",
+                  "background": "@card",
+                  "opacity": ".8",
+                  "transition": "all .3s ease",
+                  "z-index": "1"
+                },
+                "img": {
+                  "position": "absolute",
+                  "top": "0",
+                  "left": "0",
+                  "height": "100%",
+                  "object-fit": "cover"
+                },
+                ".text-wrapper": {
+                  "z-index": "1",
+                  ".mbr-card-title": {
+                    "margin-bottom": "8px"
+                  },
+                  ".mbr-text": {
+                    "margin-bottom": "0"
+                  }
+                },
+                ".mbr-section-btn": {
+                  "z-index": "1",
+                  ".btn": {
+                    "max-height": "34px",
+                    "border": "1px solid @successColor",
+                    "box-shadow": "none",
+                    "margin-bottom": "0",
+                    "&:hover": {
+                      "background": "@successColor !important",
+                      "box-shadow": "none !important"
+                    }
+                  }
+                }
+              }
+            },
+            "@media (min-width: 992px)": {
+              ".item": {
+                "width": "20%"
+              }
+            },
+            "@media (max-width: 991px)": {
+              ".item": {
+                "width": "40%"
+              }
+            },
+            "@media (max-width: 576px)": {
+              ".item": {
+                "max-height": "300px"
+              }
+            },
+            ".mbr-card-title": {
+              "color": "#ffffff"
+            },
+            ".mbr-text": {
+              "color": "#ffffff"
+            }
+          },
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"features6\" group=\"Features\" mbr-class=\"{'mbr-fullscreen': fullScreen,\n                    'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline=\"\" title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline=\"\" title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Card Title\" name=\"showTitle\" checked=\"\">\n        <input type=\"checkbox\" title=\"Card Text\" name=\"showText\" checked=\"\">\n        <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons\" checked=\"\">\n        <input type=\"color\" title=\"Card Background\" name=\"card\" value=\"#001914\" selected=\"\">\n        <input type=\"color\" title=\"Container\" name=\"container\" value=\"#dee9f8\" selected=\"\">\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax=\"\">\n            <input type=\"color\" title=\"Color\" value=\"#ffffff\" selected=\"\">\n            <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/background1-2.jpg\" parallax=\"\">\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"@PROJECT_PATH@/assets/images/background1-2.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked=\"\">\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay &amp;&amp; bg.type !== 'color'\">\n        <input type=\"range\" inline=\"\" title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.7\" condition=\"overlay &amp;&amp; bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay &amp;&amp; bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n\n    <div mbr-class=\"{'container-fluid': !fullWidth}\">\n        <div class=\"row\">\n            \n            <div class=\"col-12 col-lg-2.2 col-md-2 item features-image active\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1920x1189.jpg\" alt=\"Mobirise\" href=\"ISO9001.html\" data-slide-to=\"1\" data-bs-slide-to=\"2\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b> ISO 9001:2015</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><b>\n                            <a href=\"ISO9001.html\" class=\"text-white text-primary\">Quality Management System</a></b></p>\n                    </div>\n                    <div mbr-buttons=\"\" mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"ISO9001.html\" data-app-placeholder=\"Type Text\">Learn more</a></div>\n                </div>\n            </div><div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1-1920x1280.jpg\" alt=\"Mobirise\" data-slide-to=\"2\" data-bs-slide-to=\"3\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO 14001:2015</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\">\n                            <a href=\"ISO14001.html\" class=\"text-white\">Environmental Management Systems</a>\n                        </p>\n                    </div>\n                    <div mbr-buttons=\"\" mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"ISO14001.html\" data-app-placeholder=\"Type Text\">\n                            Learn more</a></div>\n                </div>\n            </div>\n            <div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1280x1920.jpg\" alt=\"Mobirise\" data-slide-to=\"2\" data-bs-slide-to=\"2\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO 45001:2018</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><b><b>\n                            <a href=\"45001OHSMS.html\" class=\"text-white\">Occupational Health and Safety Management Systems</a></b>\n                        </b></p>\n                    </div>\n                    <div mbr-buttons=\"\" mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"45001OHSMS.html\" data-app-placeholder=\"Type Text\">\n                            Learn more\n                        </a></div>\n                </div>\n            </div><div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1920x1140.jpg\" alt=\"Mobirise\" data-slide-to=\"3\" data-bs-slide-to=\"3\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO/IEC 27001</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><a href=\"page13.html\" class=\"text-white\">Information Security Management Systems</a><br></p>\n                    </div>\n                    <div mbr-buttons=\"\" mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"page13.html\" data-app-placeholder=\"Type Text\">\n                            Learn more\n                        </a></div>\n                </div>\n            </div><div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1440x1920.jpg\" alt=\"Mobirise\" data-slide-to=\"5\" data-bs-slide-to=\"5\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO 22000&nbsp;</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><a href=\"page12.html\" class=\"text-white\">Food Safety Management Systems</a><br></p>\n                    </div>\n                    <div mbr-buttons=\"\" mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"page12.html\" data-app-placeholder=\"Type Text\">\n                            Learn more\n                        </a></div>\n                </div>\n            </div>\n            \n            \n            \n        </div>\n    </div>\n</section>",
+          "_JSplaceholders": [],
+          "_PHPplaceholders": [],
+          "_anchor": "features6-dx",
+          "_isUserblock": true,
+          "_cid": "tNsW7lexdx",
+          "_protectedParams": [],
+          "_global": false,
+          "_once": false,
+          "_params": {}
+        },
+        {
           "alias": false,
           "_styles": {
             "padding-top": "(@paddingTop * 1rem)",
@@ -2592,7 +2737,7 @@
           },
           "_name": "features6",
           "_sourceTheme": "leaderm5",
-          "_customHTML": "<section data-bs-version=\"5.1\" class=\"features6\" group=\"Features\" mbr-class=\"{'mbr-fullscreen': fullScreen,\n                    'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Card Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Card Text\" name=\"showText\" checked>\n        <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons\" checked>\n        <input type=\"color\" title=\"Card Background\" name=\"card\" value=\"#001914\" selected>\n        <input type=\"color\" title=\"Container\" name=\"container\" value=\"#dee9f8\" selected>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"color\" title=\"Color\" value=\"#ffffff\" selected>\n            <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/background1-2.jpg\" parallax>\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"@PROJECT_PATH@/assets/images/background1-2.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.7\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n\n    <div mbr-class=\"{'container-fluid': !fullWidth}\">\n        <div class=\"row\">\n            \n            <div class=\"col-12 col-lg-2.2 col-md-2 item features-image active\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1920x1189.jpg\" alt=\"Mobirise\" href=\"ISO9001.html\" data-slide-to=\"1\" data-bs-slide-to=\"2\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b> ISO 9001:2015</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><b>\n                            <a href=\"ISO9001.html\" class=\"text-white text-primary\">Quality Management System</a></b></p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-white\" href=\"ISO9001.html\" data-app-placeholder=\"Type Text\">Learn more</a></div>\n                </div>\n            </div><div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1-1920x1280.jpg\" alt=\"Mobirise\" data-slide-to=\"2\" data-bs-slide-to=\"3\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO 14001:2015</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\">\n                            <a href=\"ISO14001.html\" class=\"text-white\">Environmental Management Systems</a>\n                        </p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-white\" href=\"ISO14001.html\" data-app-placeholder=\"Type Text\">\n                            Learn more</a></div>\n                </div>\n            </div>\n            <div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1280x1920.jpg\" alt=\"Mobirise\" data-slide-to=\"2\" data-bs-slide-to=\"2\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO 45001:2018</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><b><b>\n                            <a href=\"45001OHSMS.html\" class=\"text-white\">Occupational Health and Safety Management Systems</a></b>\n                        </b></p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-white\" href=\"45001OHSMS.html\" data-app-placeholder=\"Type Text\">\n                            Learn more\n                        </a></div>\n                </div>\n            </div><div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1920x1140.jpg\" alt=\"Mobirise\" data-slide-to=\"3\" data-bs-slide-to=\"3\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO/IEC 27001</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><a href=\"page13.html\" class=\"text-primary\">Information Security Management Systems</a><br></p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-white\" href=\"page13.html\" data-app-placeholder=\"Type Text\">\n                            Learn more\n                        </a></div>\n                </div>\n            </div><div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1440x1920.jpg\" alt=\"Mobirise\" data-slide-to=\"5\" data-bs-slide-to=\"5\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO 22000&nbsp;</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><a href=\"page12.html\" class=\"text-primary\">Food Safety Management Systems</a><br></p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-white\" href=\"page12.html\" data-app-placeholder=\"Type Text\">\n                            Learn more\n                        </a></div>\n                </div>\n            </div>\n            \n            \n            \n        </div>\n    </div>\n</section>",
+          "_customHTML": "<section data-bs-version=\"5.1\" class=\"features6\" group=\"Features\" mbr-class=\"{'mbr-fullscreen': fullScreen,\n                    'mbr-parallax-background': bg.parallax}\">\n    <mbr-parameters>\n        <header>Size</header>\n        <input type=\"checkbox\" title=\"Full Screen\" name=\"fullScreen\">\n        <input type=\"checkbox\" title=\"Full Width\" name=\"fullWidth\">\n        <input type=\"range\" inline title=\"Top\" name=\"paddingTop\" min=\"0\" max=\"10\" step=\"1\" value=\"0\" condition=\"fullScreen == false\">\n        <input type=\"range\" inline title=\"Bottom\" name=\"paddingBottom\" min=\"0\" max=\"10\" step=\"1\" value=\"5\" condition=\"fullScreen == false\">\n        <header>Show/Hide</header>\n        <input type=\"checkbox\" title=\"Card Title\" name=\"showTitle\" checked>\n        <input type=\"checkbox\" title=\"Card Text\" name=\"showText\" checked>\n        <input type=\"checkbox\" title=\"Buttons\" name=\"showButtons\" checked>\n        <input type=\"color\" title=\"Card Background\" name=\"card\" value=\"#001914\" selected>\n        <input type=\"color\" title=\"Container\" name=\"container\" value=\"#dee9f8\" selected>\n        <header>Background</header>\n        <fieldset type=\"background\" name=\"bg\" parallax>\n            <input type=\"color\" title=\"Color\" value=\"#ffffff\" selected>\n            <input type=\"image\" title=\"Image\" value=\"@PROJECT_PATH@/assets/images/background1-2.jpg\" parallax>\n        </fieldset>\n        <header condition=\"bg.type === 'video'\">Fallback Image</header>\n        <input type=\"image\" title=\"Fallback Image\" value=\"@PROJECT_PATH@/assets/images/background1-2.jpg\" name=\"fallBackImage\" condition=\"bg.type === 'video'\">\n        <input type=\"checkbox\" title=\"Overlay\" name=\"overlay\" condition=\"bg.type !== 'color'\" checked>\n        <input type=\"color\" title=\"Overlay Color\" name=\"overlayColor\" value=\"#ffffff\" condition=\"overlay && bg.type !== 'color'\">\n        <input type=\"range\" inline title=\"Opacity\" name=\"overlayOpacity\" min=\"0\" max=\"1\" step=\"0.1\" value=\"0.7\" condition=\"overlay && bg.type !== 'color'\">\n    </mbr-parameters>\n\n    <div class=\"mbr-fallback-image disabled\" mbr-if=\"bg.type == 'video'\"></div>\n    <div class=\"mbr-overlay\" mbr-if=\"overlay && bg.type!== 'color'\" mbr-style=\"{'opacity': overlayOpacity, 'background-color': overlayColor}\">\n    </div>\n\n    <div mbr-class=\"{'container-fluid': !fullWidth}\">\n        <div class=\"row\">\n            \n            <div class=\"col-12 col-lg-2.2 col-md-2 item features-image active\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1920x1189.jpg\" alt=\"Mobirise\" href=\"ISO9001.html\" data-slide-to=\"1\" data-bs-slide-to=\"2\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b> ISO 9001:2015</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><b>\n                            <a href=\"ISO9001.html\" class=\"text-white text-primary\">Quality Management System</a></b></p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"ISO9001.html\" data-app-placeholder=\"Type Text\">Learn more</a></div>\n                </div>\n            </div><div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1-1920x1280.jpg\" alt=\"Mobirise\" data-slide-to=\"2\" data-bs-slide-to=\"3\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO 14001:2015</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\">\n                            <a href=\"ISO14001.html\" class=\"text-white\">Environmental Management Systems</a>\n                        </p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"ISO14001.html\" data-app-placeholder=\"Type Text\">\n                            Learn more</a></div>\n                </div>\n            </div>\n            <div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1280x1920.jpg\" alt=\"Mobirise\" data-slide-to=\"2\" data-bs-slide-to=\"2\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO 45001:2018</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><b><b>\n                            <a href=\"45001OHSMS.html\" class=\"text-white\">Occupational Health and Safety Management Systems</a></b>\n                        </b></p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"45001OHSMS.html\" data-app-placeholder=\"Type Text\">\n                            Learn more\n                        </a></div>\n                </div>\n            </div><div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1920x1140.jpg\" alt=\"Mobirise\" data-slide-to=\"3\" data-bs-slide-to=\"3\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO/IEC 27001</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><a href=\"page13.html\" class=\"text-white\">Information Security Management Systems</a><br></p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"page13.html\" data-app-placeholder=\"Type Text\">\n                            Learn more\n                        </a></div>\n                </div>\n            </div><div class=\"col-12 col-lg-2.2 col-md-2 item features-image\">\n                <div class=\"item-wrapper\">\n                    <img src=\"@PROJECT_PATH@/assets/images/mbr-1440x1920.jpg\" alt=\"Mobirise\" data-slide-to=\"5\" data-bs-slide-to=\"5\">\n                    <div class=\"text-wrapper\">\n                        <h3 class=\"mbr-card-title mbr-fonts-style\" mbr-theme-style=\"display-5\" mbr-if=\"showTitle\" data-app-selector=\".mbr-card-title, .mbr-section-btn\"><b>ISO 22000&nbsp;</b></h3>\n                        <p class=\"mbr-text mbr-fonts-style\" mbr-theme-style=\"display-1\" data-app-selector=\".mbr-text\" mbr-if=\"showText\"><a href=\"page12.html\" class=\"text-white\">Food Safety Management Systems</a><br></p>\n                    </div>\n                    <div mbr-buttons mbr-theme-style=\"display-7\" class=\"mbr-section-btn\" mbr-if=\"showButtons\"><a class=\"btn btn-primary\" href=\"page12.html\" data-app-placeholder=\"Type Text\">\n                            Learn more\n                        </a></div>\n                </div>\n            </div>\n            \n            \n            \n        </div>\n    </div>\n</section>",
           "_JSplaceholders": [],
           "_PHPplaceholders": [],
           "_anchor": "features6-bk",
